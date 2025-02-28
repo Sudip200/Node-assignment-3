@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Normal Message</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #121212; /* Dark background */
+        color: #ffffff; /* White text */
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      #container {
+        background-color: #1f1f1f; /* Darker container for message */
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        width: 80%;
+        max-width: 500px;
+        text-align: center;
+      }
+
+      h1 {
+        color: #ff4081; /* Pink color for heading */
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+
+      p {
+        color: #66bb6a; /* Green color for normal message text */
+        font-size: 18px;
+        margin-top: 0;
+      }
+
+      .emoji {
+        font-size: 36px;
+        margin-right: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <h1>✅ Success</h1>
+      <p class="emoji">🎉 <%= message %></p>
+    </div>
+  </body>
+</html>
