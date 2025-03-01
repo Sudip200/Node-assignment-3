@@ -14,7 +14,20 @@ exports.listAllUsers=(req,res)=>{
         res.render('listusers',{data:data})
     })
 }
-exports.editUser=(req,res)=>{
+exports.vieweditUser=(req,res)=>{
     const id = req.params.id
     res.render('edit',{id:id})
+} 
+exports.editUser =(req,res)=>{
+    const id = req.params.id;
+    console.log(req.body.name)
+    Employee.editEmployee(id,req.body.name,()=>{
+       res.render('message',{message:'Edited User Successfully'})
+    })
+}
+exports.deleteUser =(req,res)=>{
+    const id = req.params.id;
+    Employee.deleteEmployee(id,()=>{
+        res.render('message',{message:'deleted user successfully'})
+    })
 }
