@@ -8,8 +8,11 @@
 </head>
 <body>
    <%- include('layouts/nav.ejs') %>
-    <% for (let user of data) { %>
-        <h2><%= user.name %></h2><br>
-     <% } %>
+   <% data.forEach((employee)=>{
+    %> <div><%= employee.name %>
+      <a href="/edit/<%= employee.id %>" >Edit</a>
+    </div>
+  <% }) %>
+
 </body>
 </html>

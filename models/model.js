@@ -1,17 +1,19 @@
 const fs = require('fs');
 const path = require('path')
 class Employee{
-    constructor(name){
+    constructor(id,name){
+        console.log(id,name)
+        this.id=id
         this.name=name
     }  
     save(cb){
-        
             fs.readFile(path.join(__dirname,'../','data','users.json'),(err,data)=>{
                try{
                  if(err){
                     throw new Error('Internal Server Error')
-                 }
+                 } 
                 let jsObj = JSON.parse(data);
+                 
                 jsObj.push(this)
                 console.log(jsObj)
                 fs.writeFile(path.join(__dirname,'../','data','users.json'),JSON.stringify(jsObj),(err)=>{
