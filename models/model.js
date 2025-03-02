@@ -6,7 +6,7 @@ class Employee{
         this.id=id
         this.name=name
     }  
-    save(cb){
+    save(cb,errorcb){
             fs.readFile(path.join(__dirname,'../','data','users.json'),(err,data)=>{
                try{
                  if(err){
@@ -23,7 +23,7 @@ class Employee{
                    cb()
                })
                }catch(e){
-                  res.status(500).render('error',{message:'Internal Server Error'})
+                  errorcb(e)
                }
               })
     }
@@ -32,13 +32,13 @@ class Employee{
              cb(JSON.parse(data))
         })
     }
-    static editEmployee(id,name,cb){
-        fs.readFile((path.join(__dirname,'../','data','users.json'),(err,data)=>{
+    static editEmployee(id,name,cb,errorcb){
+        fs.readFile(path.join(__dirname,'../','data','users.json'),(err,data)=>{
             try {
                if(err){
                 throw new Error('Internal Server Error');
                }
-               const employees = JSON.parse(data);
+             let employees = JSON.parse(data);
                employees = employees.map((employee)=>{
                   if(employee.id === id){
                     return { id ,name}
@@ -53,18 +53,19 @@ class Employee{
                })
                
             }catch(e){
-                 res.status(500).render('error',e.message)
+                console.log(e.message)
+                errorcb(e)
             }
     }) 
-        )
+        
     }
-    static deleteEmployee(id,cb){
-        fs.readFile((path.join(__dirname,'../','data','users.json'),(err,data)=>{
+    static deleteEmployee(id,cb,errorcb){
+        fs.readFile(path.join(__dirname,'../','data','users.json'),(err,data)=>{
             try {
                if(err){
                 throw new Error('Internal Server Error');
                }
-               const employees = JSON.parse(data);
+               let employees = JSON.parse(data);
             employees = employees.filter((employee)=> employee.id !== id)
                fs.writeFile(path.join(__dirname,'../','data','users.json'),JSON.stringify(employees),(err)=>{
                 if(err){
@@ -74,9 +75,9 @@ class Employee{
                })
                
             }catch(e){
-                 res.status(500).render('error',e.message)
+                errorcb(e)
             }
-    }) 
+    }
         )
     }
 }

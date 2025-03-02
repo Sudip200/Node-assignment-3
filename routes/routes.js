@@ -7,5 +7,5 @@ router.post('/add-user',middlerWares.validateUser,handleControllers.submitHandle
 router.get('/users',handleControllers.listAllUsers)
 router.get('/edit/:id',handleControllers.vieweditUser)
 router.post('/edit/:id',middlerWares.validateUser,handleControllers.editUser)
-router.post('/delete/:id',handleControllers.deleteUser)
+router.get('/delete/:id',handleControllers.deleteUser)
 module.exports=router
