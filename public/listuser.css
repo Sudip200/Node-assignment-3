@@ -89,16 +89,26 @@ body {
         nav a:hover {
             text-decoration: underline;
         }
-        div {
-            display: block;  /* Ensures divs appear on new lines */
-            background: white;
+        .container{
+            display: flex; 
+            flex-direction: column; /* Ensures divs appear on new lines */
+            background: rgb(32, 27, 27);
             margin: 10px auto;
             padding: 10px 20px;
             max-width: 400px;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
             font-size: 18px;
-            color: #333;
+            width: 400px;
+            
+            color: #ffffff;
             text-align: center;
         }
+
         
+        .container a {
+            color: #ffcc00;
+            text-decoration: none;
+
+
+        }

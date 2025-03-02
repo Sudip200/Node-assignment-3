@@ -11,5 +11,10 @@
       <h1>✅ Success</h1>
       <p class="emoji">🎉 <%= message %></p>
     </div>
+    <script>
+      setTimeout(() => {
+        window.location.href = `<%= redirect %>`;
+      }, 2000);
+    </script>
   </body>
 </html>

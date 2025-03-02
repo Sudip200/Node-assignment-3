@@ -8,7 +8,7 @@ exports.handleHome=(req,res)=>{
 exports.submitHandler=(req,res)=>{
     const employee = new Employee(uuidv4(),req.body.name)
     employee.save(()=>{
-        res.render('message',{message:'User Submitted'})
+        res.render('message',{message:'User Submitted',redirect:'/users'})
     },(e)=>res.status(500).render('error',{message:e.message}))
 }
 exports.listAllUsers=(req,res)=>{
@@ -35,7 +35,7 @@ exports.editUser =(req,res)=>{
     const id = req.params.id;
     console.log(req.body.name)
     Employee.editEmployee(id,req.body.name,()=>{
-       res.render('message',{message:'Edited User Successfully'})
+       res.render('message',{message:'Edited User Successfully',redirect:'/users'})
     },(e)=> {
         console.log('inside callback',e.message)
         res.status(500).render('error',{message:e.message})
@@ -44,6 +44,6 @@ exports.editUser =(req,res)=>{
 exports.deleteUser =(req,res)=>{
     const id = req.params.id;
     Employee.deleteEmployee(id,()=>{
-        res.render('message',{message:'deleted user successfully'})
+        res.render('message',{message:'deleted user successfully',redirect:'/users'})
     },(e)=>res.status(500).render('error',{message:e.message}))
 }
