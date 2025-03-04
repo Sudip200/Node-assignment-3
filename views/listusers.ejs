@@ -9,16 +9,19 @@
 <body>
    <%- include('layouts/nav.ejs') %>
    <div class="base-container">
-   <% data.forEach((employee)=>{
-    %> <div class='container'>
-      <div><%= employee.name %></div>
-      <div>
-        <a href="/edit/<%= employee.id %>" >Edit</a>
-      <a href = "/delete/<%= employee.id %>">Delete</a>
+  <% if (data.length == 0) { %>
+    <h1>No users found</h1>
+  <% } else {
+    data.forEach((employee)=>{
+      %> <div class='container'>
+        <div><%= employee.name %></div>
+        <div>
+          <a href="/edit/<%= employee.id %>" >Edit</a>
+        <a href = "/delete/<%= employee.id %>">Delete</a>
+        </div>
       </div>
-    </div>
-  <% }) %>
+    <% }) 
+  }%>
 </div>
-
 </body>
 </html>

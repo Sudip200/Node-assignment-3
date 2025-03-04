@@ -6,6 +6,7 @@ class Employee{
         this.id=id
         this.name=name
     }  
+    // save employee
     save(cb,errorcb){
             fs.readFile(path.join(__dirname,'../','data','users.json'),(err,data)=>{
                try{
@@ -27,11 +28,13 @@ class Employee{
                }
               })
     }
+    // list all employees
     static listAll(cb){
         fs.readFile(path.join(__dirname,'../','data','users.json'),(err,data)=>{
              cb(JSON.parse(data))
         })
     }
+    // edit employee
     static editEmployee(id,name,cb,errorcb){
         fs.readFile(path.join(__dirname,'../','data','users.json'),(err,data)=>{
             try {
@@ -59,6 +62,7 @@ class Employee{
     }) 
         
     }
+    // delete employee
     static deleteEmployee(id,cb,errorcb){
         fs.readFile(path.join(__dirname,'../','data','users.json'),(err,data)=>{
             try {

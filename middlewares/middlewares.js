@@ -4,19 +4,22 @@ const fs = require('fs');
 exports.validateUser = function(req,res,next){
     console.log(req.body.name)
     const isValidName = (name) => /^[A-Za-z]+$/.test(name.replace(' ',''));
+    // check if name is valid
     if(!isValidName(req.body.name)){
-        res.render('error',{message:'Number is not a valid name'})
+        res.render('error',{message:'Number is not a valid name',redirect:'/'})
         return
     }
+    // check if user already exist
      fs.readFile(path.join(__dirname,'..','data','users.json'),(err,data)=>{
         if(err){
-            res.render('error',{message:err})
+            res.render('error',{message:err,redirect:'/'})
             return
         }
+    
         let employees= JSON.parse(data);
         for(let employee of employees){
             if(employee.name == req.body.name){
-                res.render('error',{message:'User Already Exist'})
+                res.render('error',{message:'User Already Exist',redirect:'/'})
                 return
             }
         }
