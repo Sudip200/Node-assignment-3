@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>User Input Form</title>
-    <link href="./listuser.css" rel="stylesheet" />
-</head>
-<body>
-   <%- include('layouts/nav.ejs') %>
-   <div class="base-container">
-  <% if (data.length == 0) { %>
-    <h1>No users found</h1>
-  <% } else {
-    data.forEach((employee)=>{
-      %> <div class='container'>
+    <link href="../listuser.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <%- include('layouts/nav.ejs') %>
+    <div class="base-container">
+      <% if (data.length == 0) { %>
+      <div class="container">
+        <h1>No users found</h1>
+      </div>
+      <% } else { data.forEach((employee)=>{ %>
+      <div class="container">
         <div><%= employee.name %></div>
         <div class="buttons">
-           <a href="/edit/<%= employee.id %>" >Edit</a>
-           <a href = "/delete/<%= employee.id %>">Delete</a>
+          <a href="/edit/<%= employee.id %>">Edit</a>
+          <a href="/delete/<%= employee.id %>">Delete</a>
         </div>
       </div>
-    <% }) 
-  }%>
-</div>
-</body>
+      <% }) }%>
+    </div>
+  </body>
 </html>

@@ -1,23 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>User Input Form</title>
-    <link rel="stylesheet"  href="./form.css" />
-</head>
-<body>
-   <%- include('layouts/nav.ejs') %>
+    <link rel="stylesheet" href="./form.css" />
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <%- include('layouts/nav.ejs') %>
     <div class="form-container">
-        <h1>Submit Your Details</h1>
-        <form action="/add-user" method="POST">
-            <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required placeholder="Enter your name">
-            </div>
-            <input type="submit" value="Submit">
-        </form>
+      <h1>Submit Your Details</h1>
+      <form action="/add-user" method="POST">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            placeholder="Enter your name"
+          />
+        </div>
+        <input type="submit" value="Submit" />
+      </form>
     </div>
-
-</body>
+  </body>
 </html>
