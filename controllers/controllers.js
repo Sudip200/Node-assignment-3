@@ -2,7 +2,7 @@ const { Employee } = require("../models/model")
 const { v4: uuidv4 } = require('uuid');
 const path = require('path');
 const fs = require('fs');
-const flash = require('connect-flash');
+
 // home page form
 exports.handleHome=(req,res)=>{
     res.render('form')

@@ -8,11 +8,11 @@ exports.validateUser = function(req,res,next){
     }else if(req.url.includes('/edit')){
         mode = 'edit'
     }
-    const isValidName = (name) => /^[A-Za-z]+$/.test(name.replace(' ',''));
+    const isValidName = (name) => /^[A-Za-z\s]+$/.test(name);
     // check if name is valid
     if(!isValidName(req.body.name)){
         res.status(400).
-        render('error',{message:'Number is not a valid name',redirect:
+        render('error',{message:'Name is not valid',redirect:
         mode === 'add'?'/':'/edit/'+
         req.params.id
         })
