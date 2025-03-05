@@ -4,17 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Normal Message</title>
-    <link rel="stylesheet" href="../message.css" />
   </head>
   <body>
     <div id="container">
       <h1>✅ Success</h1>
       <p class="emoji">🎉 <%= message %></p>
+      <p>redirecting.....</p>
     </div>
     <script>
       setTimeout(() => {
         window.location.href = `<%= redirect %>`;
-      }, 2000);
+      }, 3000);
     </script>
+    <%- include('styles/messagestyle.ejs') %>
   </body>
 </html>

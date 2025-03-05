@@ -4,9 +4,7 @@ body {
             color: #ffffff;
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+           
             height: 100vh;
 }
 
@@ -80,7 +78,7 @@ body {
         }
 
         nav a {
-           color:black;/* Yellow color */
+           color:black;
             text-decoration: none;
             margin: 0 15px;
             font-size: 18px;
@@ -91,24 +89,33 @@ body {
         }
         .container{
             display: flex; 
-            flex-direction: column; /* Ensures divs appear on new lines */
+            flex-direction: row;
             background: rgb(32, 27, 27);
+            justify-content: space-around;
             margin: 10px auto;
             padding: 10px 20px;
-            max-width: 400px;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
             font-size: 18px;
-            width: 400px;
-            
+            gap:20px;
             color: #ffffff;
+            width: 80%;
             text-align: center;
+        }
+        .base-container{
+            width: 100%;
+            margin-top: 150px;
+            
         }
 
         
         .container a {
-            color: #ffcc00;
+            color: black;
             text-decoration: none;
+            background-color: #e6b800;
+            padding: 10px 20px;
+            border-radius: 5px;
+            
 
 
         }

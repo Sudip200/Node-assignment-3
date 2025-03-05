@@ -15,9 +15,9 @@
     data.forEach((employee)=>{
       %> <div class='container'>
         <div><%= employee.name %></div>
-        <div>
-          <a href="/edit/<%= employee.id %>" >Edit</a>
-        <a href = "/delete/<%= employee.id %>">Delete</a>
+        <div class="buttons">
+           <a href="/edit/<%= employee.id %>" >Edit</a>
+           <a href = "/delete/<%= employee.id %>">Delete</a>
         </div>
       </div>
     <% }) 

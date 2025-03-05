@@ -4,17 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Error Message</title>
-    <link rel="stylesheet" href="../message.css" />
+
   </head>
   <body>
     <div id="container">
       <h1>❌ Error</h1>
       <p class="emoji">⚠️ <%= message %></p>
+      <p>redirecting.....</p>
     </div>
     <script>
       setTimeout(() => {
+        console.log('Redirecting to <%= redirect %>');
         window.location.href = `<%= redirect %>`;
-      }, 1000);
+      }, 3000);
     </script>
+    <%- include('styles/messagestyle.ejs') %>
   </body>
 </html>

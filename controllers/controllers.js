@@ -2,6 +2,7 @@ const { Employee } = require("../models/model")
 const { v4: uuidv4 } = require('uuid');
 const path = require('path');
 const fs = require('fs');
+const flash = require('connect-flash');
 // home page form
 exports.handleHome=(req,res)=>{
     res.render('form')
@@ -10,14 +11,18 @@ exports.handleHome=(req,res)=>{
 exports.submitHandler=(req,res)=>{
     const employee = new Employee(uuidv4(),req.body.name)
     employee.save(()=>{
-        res.render('message',{message:'User Submitted',redirect:'/users'})
-    },(e)=>res.status(500).render('error',{message:e.message,
+        res.status(201).
+        render('message',{message:'User Submitted',redirect:'/users'})
+
+    },
+    (e)=>res.status(500).render('error',{message:e.message,
         redirect:'/'}))
 }
 // list all users
 exports.listAllUsers=(req,res)=>{
     Employee.listAll((data)=>{
-        res.render('listusers',{data:data})
+        res.status(200).
+        render('listusers',{data:data})
     })
 }
 // view edit user
@@ -41,9 +46,9 @@ exports.editUser =(req,res)=>{
     const id = req.params.id;
     console.log(req.body.name)
     Employee.editEmployee(id,req.body.name,()=>{
-        
        res.render('message',{message:'Edited User Successfully',redirect:'/users'})
-    },(e)=> {
+    },
+    (e)=> {
         console.log('inside callback',e.message)
         res.status(500).render('error',{message:e.message,redirect:'/edit/'+id})
 })
