@@ -71,10 +71,7 @@ exports.deleteUser = (req, res) => {
   Employee.deleteEmployee(
     id,
     () => {
-      res.render("message", {
-        message: "deleted user successfully",
-        redirect: "/users",
-      });
+      res.redirect("/users");
     },
     (e) =>
       res
