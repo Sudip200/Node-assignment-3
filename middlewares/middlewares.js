@@ -45,6 +45,33 @@ exports.validateUser = function (req, res, next) {
       }
     );
   } else {
-    next();
+    fs.readFile(
+      path.join(__dirname, "..", "data", "users.json"),
+      (err, data) => {
+        if (err) {
+          console.log(err);
+          res.render("error", { message: err, redirect: "/" });
+          return;
+        }
+
+        let employees = JSON.parse(data);
+
+        for (let employee of employees) {
+          if (employee.id === req.params.id) {
+            continue;
+          }
+          if (
+            employee.name.toLowerCase() === req.body.name.toLowerCase().trim()
+          ) {
+            res.status(400).render("error", {
+              message: "User Already Exist",
+              redirect: mode === "add" ? "/" : "/edit/" + req.params.id,
+            });
+            return;
+          }
+        }
+        next();
+      }
+    );
   }
 };
