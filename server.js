@@ -9,6 +9,9 @@ app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "ejs");
 app.set("views", "views");
 app.use(router);
+app.use((req, res, next) => {
+  res.render("error", { message: "404 Not found", redirect: "/" });
+});
 
 app.listen(3000, () => {
   console.log("listening on port 3000");
